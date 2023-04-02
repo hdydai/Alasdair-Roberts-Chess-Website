@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<link href="custom.css" rel="stylesheet" type="text/css" />
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<!--<body class="title" , translate>
+  greychess
+  <script src="chess.js"></script>
+  <script src="script.js"></script>
+</body>-->
+
+<body>
+  <script src="chess.js"></script>
+  <script src="script.js"></script>
+  <header class="header">
+    <title>greychess</title>
+  </header>
+  <section>
+    <div id="board" class="board w-side">
+      <div id="co-files" class="coords files">
+        <coord>h</coord>
+        <coord>g</coord>
+        <coord>f</coord>
+        <coord>e</coord>
+        <coord>d</coord>
+        <coord>c</coord>
+        <coord>b</coord>
+        <coord>a</coord>
+      </div>
+      <div id="co-ranks" class="coords ranks">
+        <coord>1</coord>
+        <coord>2</coord>
+        <coord>3</coord>
+        <coord>4</coord>
+        <coord>5</coord>
+        <coord>6</coord>
+        <coord>7</coord>
+        <coord>8</coord>
+      </div>
+
+      <square id="a1" class="fa r1 dark" ><move></move><highlight></highlight></square>
+      <square id="a2" class="fa r2 light"><move></move><highlight></highlight></square>
+      <square id="a3" class="fa r3 dark" ><move></move><highlight></highlight></square>
+      <square id="a4" class="fa r4 light"><move></move><highlight></highlight></square>
+      <square id="a5" class="fa r5 dark" ><move></move><highlight></highlight></square>
+      <square id="a6" class="fa r6 light"><move></move><highlight></highlight></square>
+      <square id="a7" class="fa r7 dark" ><move></move><highlight></highlight></square>
+      <square id="a8" class="fa r8 light"><move></move><highlight></highlight></square>
+
+      <square id="b1" class="fb r1 light"><move></move><highlight></highlight></square>
+      <square id="b2" class="fb r2 dark" ><move></move><highlight></highlight></square>
+      <square id="b3" class="fb r3 light"><move></move><highlight></highlight></square>
+      <square id="b4" class="fb r4 dark" ><move></move><highlight></highlight></square>
+      <square id="b5" class="fb r5 light"><move></move><highlight></highlight></square>
+      <square id="b6" class="fb r6 dark" ><move></move><highlight></highlight></square>
+      <square id="b7" class="fb r7 light"><move></move><highlight></highlight></square>
+      <square id="b8" class="fb r8 dark" ><move></move><highlight></highlight></square>
+
+      <square id="c1" class="fc r1 dark" ><move></move><highlight></highlight></square>
+      <square id="c2" class="fc r2 light"><move></move><highlight></highlight></square>
+      <square id="c3" class="fc r3 dark" ><move></move><highlight></highlight></square>
+      <square id="c4" class="fc r4 light"><move></move><highlight></highlight></square>
+      <square id="c5" class="fc r5 dark" ><move></move><highlight></highlight></square>
+      <square id="c6" class="fc r6 light"><move></move><highlight></highlight></square>
+      <square id="c7" class="fc r7 dark" ><move></move><highlight></highlight></square>
+      <square id="c8" class="fc r8 light"><move></move><highlight></highlight></square>
+
+      <square id="d1" class="fd r1 light"><move></move><highlight></highlight></square>
+      <square id="d2" class="fd r2 dark" ><move></move><highlight></highlight></square>
+      <square id="d3" class="fd r3 light"><move></move><highlight></highlight></square>
+      <square id="d4" class="fd r4 dark "><move></move><highlight></highlight></square>
+      <square id="d5" class="fd r5 light"><move></move><highlight></highlight></square>
+      <square id="d6" class="fd r6 dark" ><move></move><highlight></highlight></square>
+      <square id="d7" class="fd r7 light"><move></move><highlight></highlight></square>
+      <square id="d8" class="fd r8 dark" ><move></move><highlight></highlight></square>
+
+      <square id="e1" class="fe r1 dark" ><move></move><highlight></highlight></square>
+      <square id="e2" class="fe r2 light"><move></move><highlight></highlight></square>
+      <square id="e3" class="fe r3 dark" ><move></move><highlight></highlight></square>
+      <square id="e4" class="fe r4 light"><move></move><highlight></highlight></square>
+      <square id="e5" class="fe r5 dark" ><move></move><highlight></highlight></square>
+      <square id="e6" class="fe r6 light"><move></move><highlight></highlight></square>
+      <square id="e7" class="fe r7 dark" ><move></move><highlight></highlight></square>
+      <square id="e8" class="fe r8 light"><move></move><highlight></highlight></square>
+
+      <square id="f1" class="ff r1 light"><move></move><highlight></highlight></square>
+      <square id="f2" class="ff r2 dark" ><move></move><highlight></highlight></square>
+      <square id="f3" class="ff r3 light"><move></move><highlight></highlight></square>
+      <square id="f4" class="ff r4 dark" ><move></move><highlight></highlight>
+  <!--<svg viewbox="0 0 200 200" class="marker-box" opacity="1">
+        <defs>
+          <marker
+            id="triangle"
+            viewBox="0 0 10 10"
+            refX="1"
+            refY="5"
+            markerUnits="strokeWidth"
+            markerWidth="2.5"
+            markerHeight="2.5"
+            opacity = "0.4"
+            orient="auto">
+            <path d="M 0 0 L 5 5 L 0 10 z" fill="var(--accent)" />
+          </marker>
+        </defs>
+        <line x1="50" y1="50" x2="50" y2="150" stroke-opacity = "0.4" stroke-width = "20" stroke="var(--accent)" stroke-linecap="butt" marker-end="url(#triangle)">  </line>
+      </svg>--></square>
+      <square id="f5" class="ff r5 light"><move></move><highlight></highlight></square>
+      <square id="f6" class="ff r6 dark" ><move></move><highlight></highlight></square>
+      <square id="f7" class="ff r7 light"><move></move><highlight></highlight></square>
+      <square id="f8" class="ff r8 dark" ><move></move><highlight></highlight></square>
+
+      <square id="g1" class="fg r1 dark" ><move></move><highlight></highlight></square>
+      <square id="g2" class="fg r2 light"><move></move><highlight></highlight></square>
+      <square id="g3" class="fg r3 dark" ><move></move><highlight></highlight></square>
+      <square id="g4" class="fg r4 light"><move></move><highlight></highlight></square>
+      <square id="g5" class="fg r5 dark" ><move></move><highlight></highlight></square>
+      <square id="g6" class="fg r6 light"><move></move><highlight></highlight></square>
+      <square id="g7" class="fg r7 dark" ><move></move><highlight></highlight></square>
+      <square id="g8" class="fg r8 light"><move></move><highlight></highlight></square>
+
+      <square id="h1" class="fh r1 light"><move></move><highlight></highlight></square>
+      <square id="h2" class="fh r2 dark" ><move></move><highlight></highlight></square>
+      <square id="h3" class="fh r3 light"><move></move><highlight></highlight></square>
+      <square id="h4" class="fh r4 dark" ><move></move><highlight></highlight></square>
+      <square id="h5" class="fh r5 light"><move></move><highlight></highlight></square>
+      <square id="h6" class="fh r6 dark" ><move></move><highlight></highlight></square>
+      <square id="h7" class="fh r7 light"><move></move><highlight></highlight></square>
+      <square id="h8" class="fh r8 dark "><move></move><highlight></highlight></square>
+
+    </div>
+    <div class="side-box">
+      <div id="last-move" class="last-move">-</div>
+      <table id="move-tracker" class="move-tracker">
+        <tr class="tracker-row" id="row-1"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-2"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-3"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-4"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-5"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-6"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-7"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-8"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-9"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+        <tr class="tracker-row" id="row-10"><td class="move-num"></td><td class="move-white"></td><td class="move-black"></td></tr>
+      </table>
+    </div>
+  </section>
+  
+</body>
+
+</html>

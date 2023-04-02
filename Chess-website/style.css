@@ -1,0 +1,399 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@font-face {
+  font-family: Futura;
+  src: url("fonts/FuturaLT.woff");
+}
+@font-face {
+  font-family: Lexend-Deca;
+  src: url("fonts/LexendDeca-Light.ttf")
+}
+@font-face {
+  font-family: Roboto;
+  src: url("fonts/Roboto-Thin.ttf")
+}
+@font-face {
+  font-family: Roboto-Mono;
+  src: url("fonts/RobotoMono-Regular.ttf");
+}
+
+title {
+  display: block;
+  height: auto;
+  width: auto;
+  text-align: left;
+  font-family: Roboto;
+  color: var(--text);
+  font-weight: bold;
+  font-size: 8vh;
+  margin-left: 0.2em;
+}
+
+.header {
+  position: static;
+  margin:0;
+  width: 100vw;
+  height: 10vh;
+  background: var(--primary);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px
+}
+
+section {
+  margin: 1%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  margin: inherit;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  height: min(75vh,75vw,1000px);
+}
+
+.side-box {
+  margin: inherit;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  aspect-ratio: 1 / 2;
+  height: min(75vh,75vw,1000px);
+  border-radius: 15px;
+  background: var(--primary)
+}
+.side-box > .last-move {
+  /*position: absolute;
+  top: 2%;*/
+  height: 10%;
+  width: 90%;
+  margin: 5%;
+  font-weight: normal;
+  font-family: Roboto-mono;
+  font-size: 4vh;
+  /*margin-left: 0.2em;*/
+}
+table.move-tracker {
+  height: 70%;
+  width: 100%;
+  background: var(--background);
+  border-collapse: collapse;
+}
+tr {
+  height: 10%;
+  width: 100%;
+}
+tr > td{
+  height: 10%;
+  font-weight: normal;
+  font-family: Roboto-mono;
+  text-align: center;
+  font-size: 2vh;
+  margin-left: 0.3em;
+  border-color: var(--primary);
+  border: 2px solid var(--primary);
+}
+ tr > td.move-num {
+  width: 20%;
+}
+tr > td.move-white{
+  width: 40%
+}
+table.move-tracker > tr > td.move-black{
+  width: 40%
+}
+
+
+
+square {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+}
+
+square.light {
+  background: var(--lighttile);
+  --colour: var(--lighttile);
+}
+square.dark  {
+  background: var(--darktile);
+  --colour: var(--darktile);
+}
+move {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0%;
+  z-index: 2
+}
+highlight {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0%
+}
+body {
+  background-color: var(--background);
+  color: var(--text)
+}
+square[data-state="move-dest"] > move {
+ /* background: radial-gradient(rgba(var(--accent), 0.7) 19%, rgba(0,0,0,0) 20%);*/
+ background: radial-gradient(var(--accent) 19%, rgba(0,0,0,0) 20%);
+ opacity: 0.5;
+}
+square[data-state="move-dest"]:has(piece) > move {
+  /* background: radial-gradient(rgba(var(--accent), 0.7) 19%, rgba(0,0,0,0) 20%);*/
+  background: radial-gradient(rgba(0,0,0,0) 59%, var(--accent) 60%, var(--accent) 70%, rgba(0,0,0,0) 71%);
+  opacity: 0.5;
+}
+square:hover {
+  opacity: 0.95
+}
+square[data-highlight="true"] > highlight {
+  background: var(--accent);
+  opacity: 0.3
+}
+
+/*relative board positions*/
+.board.w-side > square.fa, .board.b-side > square.fh {left: 0%}
+.board.w-side > square.fb, .board.b-side > square.fg {left: 12.5%}
+.board.w-side > square.fc, .board.b-side > square.ff {left: 25%}
+.board.w-side > square.fd, .board.b-side > square.fe {left: 37.5%}
+.board.w-side > square.fe, .board.b-side > square.fd {left: 50%}
+.board.w-side > square.ff, .board.b-side > square.fc {left: 62.5%}
+.board.w-side > square.fg, .board.b-side > square.fb {left: 75%}
+.board.w-side > square.fh, .board.b-side > square.fa {left: 87.5%}
+
+.board.w-side > square.r1, .board.b-side > square.r8 {bottom: 0%}
+.board.w-side > square.r2, .board.b-side > square.r7 {bottom: 12.5%}
+.board.w-side > square.r3, .board.b-side > square.r6 {bottom: 25%}
+.board.w-side > square.r4, .board.b-side > square.r5 {bottom: 37.5%}
+.board.w-side > square.r5, .board.b-side > square.r4 {bottom: 50%}
+.board.w-side > square.r6, .board.b-side > square.r3 {bottom: 62.5%}
+.board.w-side > square.r7, .board.b-side > square.r2 {bottom: 75%}
+.board.w-side > square.r8, .board.b-side > square.r1 {bottom: 87.5%}
+
+/*corner rounding*/
+.board.w-side > #a1, .board.b-side > #h8 {border-bottom-left-radius: 15px;}
+.board.w-side > #h1, .board.b-side > #a8 {border-bottom-right-radius: 15px;}
+.board.w-side > #a8, .board.b-side > #h1 {border-top-left-radius: 15px;}
+.board.w-side > #h8, .board.b-side > #a1 {border-top-right-radius: 15px;}
+
+.coords {
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  font-family: Roboto-Mono;
+  font-size: 15px;
+}
+
+.coords.ranks {
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1em;
+}
+
+.coords.files {
+  bottom: 0;
+  left: 0;
+  height: 1em;
+  width: 100%;
+}
+
+coord {
+  position: relative;
+}
+
+.coords.ranks > coord {
+  width: 1em;
+  height: 12.5%;
+  top: 0.4em;
+  right: 0.4em; 
+  text-align: right;
+}
+
+.coords.files > coord {
+  width: 12.5%;
+  height: 1em;
+  left: 0.4em;
+  bottom: 0.4em; 
+  text-align: left;
+}
+
+.board.w-side > .coords > coord:nth-child(odd), .board.b-side > .coords > coord:nth-child(even) {
+  color: var(--darktile);
+}
+.board.w-side > .coords > coord:nth-child(even), .board.b-side > .coords > coord:nth-child(odd){
+  color: var(--lighttile);
+}
+
+.board.w-side > .coords.files {
+  flex-flow: row-reverse;
+}
+.board.w-side > .coords.ranks {
+  flex-flow: column-reverse;
+}
+.board.b-side > .coords.files {
+  flex-flow: row;
+}
+.board.b-side > .coords.ranks {
+  flex-flow: column;
+}
+
+.board > piece {
+  height: 12.5%;
+  width: 12.5%;
+}
+
+.board > square > piece {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+square[data-state="movable"] > piece {
+  cursor: grab
+}
+
+piece[data-state="dragging"] {
+  cursor: grabbing;
+  z-index: 2
+}
+
+square[data-state="moving"] > piece {
+  opacity: 50%
+}
+
+piece {
+  position: absolute;
+}
+
+.white.pawn {
+  background: url("cburnettsvgs/White/WhitePawn.svg") no-repeat;
+  background-size: 100%;
+}
+.white.rook {
+  background: url("cburnettsvgs/White/WhiteRook.svg") no-repeat;
+  background-size: 100%
+}
+.white.knight {
+  background: url("cburnettsvgs/White/WhiteKnight.svg") no-repeat;
+  background-size: 100%
+}
+.white.bishop {
+  background: url("cburnettsvgs/White/WhiteBishop.svg") no-repeat;
+  background-size: 100%
+}
+.white.queen {
+  background: url("cburnettsvgs/White/WhiteQueen.svg") no-repeat;
+  background-size: 100%
+}
+.white.king {
+  background: url("cburnettsvgs/White/WhiteKing.svg") no-repeat;
+  background-size: 100%
+}
+
+.black.pawn {
+  background: url("cburnettsvgs/Black/BlackPawn.svg") no-repeat;
+  background-size: 100%;
+}
+.black.rook {
+  background: url("cburnettsvgs/Black/BlackRook.svg") no-repeat;
+  background-size: 100%
+}
+.black.knight {
+  background: url("cburnettsvgs/Black/BlackKnight.svg") no-repeat;
+  background-size: 100%
+}
+.black.bishop {
+  background: url("cburnettsvgs/Black/BlackBishop.svg") no-repeat;
+  background-size: 100%
+}
+.black.queen {
+  background: url("cburnettsvgs/Black/BlackQueen.svg") no-repeat;
+  background-size: 100%
+}
+.black.king {
+  background: url("cburnettsvgs/Black/BlackKing.svg") no-repeat;
+  background-size: 100%
+}
+
+.marker-box {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 200%;
+  width: 200%;
+  z-index: 2
+}
+
+.marker {
+  stroke: var(--accent);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+promotion-box {
+  position: absolute;
+  height: 50%;
+  width: 12.5%;
+  background: var(--primary);
+  z-index: 2
+}
+
+.w-side > promotion-box.fa, .b-side > promotion-box.fh {left: 0%}
+.w-side > promotion-box.fb, .b-side > promotion-box.fg {left: 12.5%}
+.w-side > promotion-box.fc, .b-side > promotion-box.ff {left: 25%}
+.w-side > promotion-box.fd, .b-side > promotion-box.fe {left: 37.5%}
+.w-side > promotion-box.fe, .b-side > promotion-box.fd {left: 50%}
+.w-side > promotion-box.ff, .b-side > promotion-box.fc {left: 62.5%}
+.w-side > promotion-box.fg, .b-side > promotion-box.fb {left: 75%}
+.w-side > promotion-box.fh, .b-side > promotion-box.fa {left: 87.5%}
+
+.w-side > promotion-box.r8, .b-side > promotion-box.r1 {top:0%}
+.w-side > promotion-box.r1, .b-side > promotion-box.r8 {bottom:0%}
+
+promotion-box > piece {
+  position: absolute;
+  height: 25%;
+  width: 100%;
+  left: 0%
+}
+.w-side > promotion-box.r8 > .queen, .b-side > promotion-box.r1 > .queen{top:0%}
+.w-side > promotion-box.r8 > .knight, .b-side > promotion-box.r1 > .knight{top:25%}
+.w-side > promotion-box.r8 > .rook, .b-side > promotion-box.r1 > .rook{top:50%}
+.w-side > promotion-box.r8 > .bishop, .b-side > promotion-box.r1 > .bishop{top:75%}
+
+.w-side > promotion-box.r1 > .queen, .b-side > promotion-box.r8 .queen{bottom:0%}
+.w-side > promotion-box.r1 > .knight, .b-side > promotion-box.r8 .knight{bottom:25%}
+.w-side > promotion-box.r1 > .rook, .b-side > promotion-box.r8 .rook{bottom:50%}
+.w-side > promotion-box.r1 > .bishop, .b-side > promotion-box.r8 .bishop{bottom:75%}
+
+
+
+
+/*svg.line {
+  stroke-width: 20%;
+  stroke-linecap: round;
+  marker-end: url("svgs/uparrow.svg");
+  x1: 0;
+  y1: 0;
+  y2:100%;
+  x2:100%;
+}*/
