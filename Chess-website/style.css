@@ -47,7 +47,7 @@ title {
   border-bottom-right-radius: 15px
 }
 
-section {
+section.main {
   margin: 1%;
   display: flex;
   flex-flow: row wrap;
@@ -82,6 +82,25 @@ section {
   font-family: Roboto-mono;
   font-size: 4vh;
   /*margin-left: 0.2em;*/
+}
+.side-box > .options {
+  height: 10%;
+  width: 90%;
+  margin: 5%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.flip-board-button {
+  background: url("svgs/flipsymbol.svg") no-repeat;
+  background-size: 100%;
+  height: 60%;
+  aspect-ratio: 3/4;
+  opacity: 80%
+}
+.flip-board-button:hover {
+  opacity: 100%
 }
 table.move-tracker {
   height: 70%;
