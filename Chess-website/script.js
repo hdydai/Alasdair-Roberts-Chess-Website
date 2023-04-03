@@ -540,3 +540,18 @@ function setClientCenterRel(elmnt, x, y) {
   elmnt.style.left = (x-width1/2-left2)/width2*100+"%";
   elmnt.style.top = (y-height1/2-top2)/height2*100+"%";
 }
+
+function flipBoard(e) {
+  var board = document.getElementById("board")
+  if (board.classList.contains("w-side")) {
+    board.classList.remove("w-side")
+    board.classList.add("b-side")
+  }
+  else if (board.classList.contains("b-side")) {
+    board.classList.remove("b-side")
+    board.classList.add("w-side")
+  }
+  else {
+    board.classList.add("w-side")
+  }
+}
