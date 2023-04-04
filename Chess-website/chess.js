@@ -804,7 +804,7 @@ class Square {
         case 0:
           let move = new Move(origin, target, false)
           if (target.rank==1 || target.rank==8) {
-            moves.concat(move.promotions()) //Promotes to a new piece if it moves to the last rank
+            moves = moves.concat(move.promotions()) //Promotes to a new piece if it moves to the last rank
           }
           else {
             moves.push(move)
